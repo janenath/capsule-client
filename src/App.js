@@ -22,7 +22,7 @@ class App extends Component {
   }
 
   getItems = () => {
-    fetch('http://localhost:3000/items')
+    fetch('https://capsule-project-4.herokuapp.com/items')
     .then(response => response.json())
     .then(json => this.setState({items: json}))
     .catch(error => console.log(error))
@@ -36,7 +36,7 @@ class App extends Component {
     this.forceUpdate();
   }
   delete = (id, index) => {
-		fetch('http://localhost:3000/items/' + id, {
+		fetch('https://capsule-project-4.herokuapp.com/items/' + id, {
 			method: 'DELETE'
 		}).then((data) => {
 			this.setState({
@@ -47,7 +47,7 @@ class App extends Component {
 
   update = (item, index) => {
     item.selected = !item.selected
-    fetch('http://localhost:3000/items/' + item.id, {
+    fetch('https://capsule-project-4.herokuapp.com/items/' + item.id, {
       body: JSON.stringify(item),
       method: 'PUT',
       headers: {
@@ -62,7 +62,7 @@ class App extends Component {
       
       .then(jsonedItem => {
         console.log(jsonedItem)
-        fetch('http://localhost:3000/items/')
+        fetch('https://capsule-project-4.herokuapp.com/items/')
           .then(response => response.json())
           .then(items => {
             this.setState({ items: items })
@@ -82,7 +82,7 @@ class App extends Component {
     event.preventDefault()
     let newProduct = this.state.formInputs
     newProduct.selected=false
-    fetch('http://localhost:3000/items', {
+    fetch('https://capsule-project-4.herokuapp.com/items', {
       body: JSON.stringify(newProduct),
       method: 'POST',
       headers: {
